@@ -12,10 +12,6 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install Git, Scons & libtre
-      run: |
-        sudo apt-get install git scons libtre-dev libtre5
-
     - name: Build
       run: make gen-assets release
 
