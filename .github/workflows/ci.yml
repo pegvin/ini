@@ -33,7 +33,7 @@ jobs:
         submodules: recursive
 
     - name: Build
-      run: make run CC=clang ARGS=test.ini
+      run: make run OS=Windows_NT CC=clang ARGS=test.ini
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
