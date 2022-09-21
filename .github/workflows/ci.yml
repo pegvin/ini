@@ -13,7 +13,7 @@ jobs:
         submodules: recursive
 
     - name: Build
-      run: make gen-assets release
+      run: make run CC=gcc ARGS=test.ini
 
     - name: Strip
       run: strip ./test.elf
