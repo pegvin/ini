@@ -2,6 +2,10 @@
 A *tiny* ANSI C library (compatible with C++) for loading .ini config files
 
 ---
+## Todo
+- [ ] Writing Ini Files
+
+---
 ## Usage
 The files **[ini.c](src/ini.c)** and **[ini.h](src/ini.h)** should
 be dropped into an existing project.
