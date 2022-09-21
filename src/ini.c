@@ -191,7 +191,7 @@ ini_t* ini_load(const char *filename) {
 	rewind(fp);
 
 	/* Load file content into memory, null terminate, init end var */
-	ini->data = (char*)calloc(sz + 1, sizeof(char));
+	ini->data = (char*)calloc(sizeof(char), sz + 1);
 	ini->end = ini->data  + sz;
 	n = fread(ini->data, 1, sz, fp);
 	if (n != sz) {
@@ -226,7 +226,7 @@ ini_t* ini_load_str(const char *iniStr) {
 	}
 	memset(ini, 0, sizeof(*ini));
 
-	ini->data = (char*)calloc(len + 1, sizeof(char));
+	ini->data = (char*)calloc(sizeof(char), len + 1);
 	ini->end = ini->data + len;
 	strncpy(ini->data, iniStr, len);
 
