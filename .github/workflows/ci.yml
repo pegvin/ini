@@ -1,0 +1,67 @@
+name: ci
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  linux-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Install Git, Scons & libtre
+      run: |
+        sudo apt-get install git scons libtre-dev libtre5
+
+    - name: Build
+      run: make gen-assets release
+
+    - name: Strip
+      run: strip ./test.elf
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: linux-x86_64
+        path: ./test.elf
+        if-no-files-found: error
+
+  windows-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Build
+      run: make run CC=clang ARGS=test.ini
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows-x86_64
+        path: ./test.exe
+        if-no-files-found: error
+
+  osx-x86_64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Build
+      run: make run CC=clang ARGS=test.ini
+
+    - name: Strip
+      run: strip ./test.elf
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: osx-x86_64
+        path: ./test.elf
+        if-no-files-found: error
