@@ -1,12 +1,13 @@
 CC := gcc
 CFLAGS := -Isrc/ --std=c99
 LFLAGS :=
-binFile := test.elf
+binFile :=
 ARGS :=
 
 ifeq ($(OS),Windows_NT)
-	binFile := test.exe
+	binFile += test.exe
 else
+	binFile += test.elf
 	# If Using GCC Use Address Sanitizers
 	ifeq (CC, gcc)
 		CFLAGS += -fsanitize=address -fsanitize=undefined
