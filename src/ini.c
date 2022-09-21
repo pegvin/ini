@@ -27,12 +27,6 @@
 
 #include "ini.h"
 
-struct ini_t {
-	char *data;
-	char *end;
-};
-
-
 /* Case insensitive string compare */
 static int strcmpci(const char *a, const char *b) {
 	for (;;) {

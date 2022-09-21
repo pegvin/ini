@@ -10,7 +10,10 @@
 
 #define INI_VERSION "0.1.1"
 
-typedef struct ini_t ini_t;
+typedef struct {
+    char *data;
+    char *end;
+} ini_t;
 
 #ifdef __cplusplus
 extern "C" {
