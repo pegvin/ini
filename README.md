@@ -1,5 +1,5 @@
 # ini
-A *tiny* ANSI C library for loading .ini config files
+A *tiny* ANSI C library (compatible with C++) for loading .ini config files
 
 ---
 ## Usage
