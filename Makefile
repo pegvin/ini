@@ -1,13 +1,19 @@
 CC:= gcc
-CFLAGS:= -Isrc/ --std=c99 -O3
+CXX:= g++
+CCFLAGS:=-Isrc/ -O3
+CFLAGS:=--std=c99
+CXXFLAGS:=--std=c++17
 LFLAGS:=
-binFile:=
+cBinFile:=
+cppBinFile:=
 ARGS:=
 
 ifeq ($(OS),Windows_NT)
-	binFile+=./test.exe
+	cBinFile+=./test.c.exe
+	cppBinFile+=./test.cpp.exe
 else
-	binFile+=./test.elf
+	cBinFile+=./test.c.elf
+	cppBinFile+=./test.cpp.elf
 	# If Using GCC Use Address Sanitizers
 	ifeq (CC, gcc)
 		CFLAGS+=-fsanitize=address -fsanitize=undefined
@@ -16,7 +22,9 @@ else
 endif
 
 all:
-	$(CC) -o $(binFile) $(CFLAGS) $(LFLAGS) test.c src/ini.c
+	$(CC) -o $(cBinFile) $(CCFLAGS) $(CFLAGS) $(LFLAGS) test.c src/ini.c
+	$(CXX) -o $(cppBinFile) $(CCFLAGS) $(CXXFLAGS) $(LFLAGS) test.cpp src/ini.c
 
 run: all
-	$(binFile) $(ARGS)
+	$(cBinFile) $(ARGS)
+	$(cppBinFile) $(ARGS)

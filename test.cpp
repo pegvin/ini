@@ -31,7 +31,7 @@ void _PrintDatabase(ini_t* ini) {
 
 	printf("\n[ Database ]\n");
 	printf(
-		"DB Server: %s\nDB Port: %s\nDB File: %s\n\n",
+		"DB Server: %s\nDB Port: %s\nDB File: %s\n",
 		server == NULL ? "(NULL)" : server,
 		port == NULL ? "(NULL)" : port,
 		file == NULL ? "(NULL)" : file
