@@ -3,7 +3,7 @@ A *tiny* ANSI C library for loading .ini config files
 
 ---
 ## Usage
-The files **[ini.c](src/ini.c?raw=1)** and **[ini.h](src/ini.h?raw=1)** should
+The files **[ini.c](src/ini.c)** and **[ini.h](src/ini.h)** should
 be dropped into an existing project.
 
 The library has support for sections, comment lines and quoted string values
