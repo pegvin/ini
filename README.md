@@ -1,7 +1,7 @@
-
 # ini
 A *tiny* ANSI C library for loading .ini config files
 
+---
 ## Usage
 The files **[ini.c](src/ini.c?raw=1)** and **[ini.h](src/ini.h?raw=1)** should
 be dropped into an existing project.
@@ -22,11 +22,12 @@ port = 143
 file = "payroll.dat"
 ```
 
-An ini file can be loaded into memory by using the `ini_load()` function.
+An ini file can be loaded into memory by using the `ini_load(const char* filePath)` function.
 `NULL` is returned if the file cannot be loaded.
 ```c
 ini_t *config = ini_load("config.ini");
 ```
+Or A ini configuration can be loaded from a string into memory by using the `ini_load_str(const char* str)` function.
 
 The library provides two functions for retrieving values: the first is
 `ini_get()`. Given a section and a key the corresponding value is returned if
@@ -57,7 +58,10 @@ pointers returned by the library.
 ini_free(config);
 ```
 
-
+---
 ## License
 This library is free software; you can redistribute it and/or modify it under
 the terms of the MIT license. See [LICENSE](LICENSE) for details.
+
+---
+# Thanks
