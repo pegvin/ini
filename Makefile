@@ -1,5 +1,5 @@
 CC:= gcc
-CFLAGS:= -Isrc/ --std=c99
+CFLAGS:= -Isrc/ --std=c99 -O3
 LFLAGS:=
 binFile:=
 ARGS:=
