@@ -16,7 +16,7 @@ else
 endif
 
 all:
-	clang -o $(binFile) $(CFLAGS) $(LFLAGS) test.c src/ini.c
+	$(CC) -o $(binFile) $(CFLAGS) $(LFLAGS) test.c src/ini.c
 
 run: all
 	$(binFile) $(ARGS)
