@@ -247,7 +247,10 @@ fail:
 }
 
 void ini_free(ini_t *ini) {
-	free(ini->data);
+	if (ini != NULL) return;
+	if (ini->data != NULL)
+		free(ini->data);
+
 	free(ini);
 }
 
