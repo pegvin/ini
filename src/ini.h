@@ -13,7 +13,7 @@
 typedef struct ini_t ini_t;
 
 #ifdef __cplusplus
-extern "c" {
+extern "C" {
 #endif
 
 ini_t*      ini_load(const char* filename);
