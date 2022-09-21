@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 	size_t fSize = _get_file_size(fp);
 	printf("Loading File: %s (%ld bytes)\n", argv[1], fSize);
 
-	const char* iniStr = calloc((fSize * sizeof(char) + 1), sizeof(char));
+	char* iniStr = (char*)calloc((fSize * sizeof(char) + 1), sizeof(char));
 	fread((void*)iniStr, (fSize * sizeof(char)) + 1, 1, fp);
 	fclose(fp);
 	fp = NULL;
