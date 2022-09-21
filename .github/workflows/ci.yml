@@ -13,17 +13,7 @@ jobs:
         submodules: recursive
 
     - name: Build
-      run: make run CC=gcc ARGS=test.ini
-
-    - name: Strip
-      run: strip ./test.elf
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: linux-x86_64
-        path: ./test.elf
-        if-no-files-found: error
+      run: make run CC=gcc CXX=g++ ARGS=test.ini
 
   windows-x86_64:
     runs-on: ubuntu-latest
@@ -33,14 +23,7 @@ jobs:
         submodules: recursive
 
     - name: Build
-      run: make run OS=Windows_NT CC=clang ARGS=test.ini
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: windows-x86_64
-        path: ./test.exe
-        if-no-files-found: error
+      run: make run OS=Windows_NT CC=clang CXX=clang++ ARGS=test.ini
 
   osx-x86_64:
     runs-on: ubuntu-latest
@@ -50,14 +33,4 @@ jobs:
         submodules: recursive
 
     - name: Build
-      run: make run CC=clang ARGS=test.ini
-
-    - name: Strip
-      run: strip ./test.elf
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: osx-x86_64
-        path: ./test.elf
-        if-no-files-found: error
+      run: make run CC=clang CXX=clang++ ARGS=test.ini
